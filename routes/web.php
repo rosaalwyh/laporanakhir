@@ -1,32 +1,45 @@
-<?php
-
+<?php 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::post('login', 'LoginController@login')->name('login');
 
-Route::get('blank_page','HomeController@blank')->name('blank_page');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Auth::routes();
+Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
+    Auth::routes();
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//User
+    Route::view('/', 'welcome')->name('home');
+    Route::view('/registrasi', 'authentikasi.admin.registrasi')->name('registrasi');
+    Route::post('/create', 'LoginController@create')->name('regis');
+    Route::view('/login', 'authentikasi.admin.login')->name('login');
+    Route::post('/proseslogin', 'LoginController@checklogin')->name('ceklogin'); 
+    Route::view('/blank_page','blank_page')->name('blank_page');
 
-// Auth::routes();
+//Admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::middleware(['auth','IsAdmin', 'PreventBackHistory'])->group(function () {
+        Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+        Route::post('/logout', 'AdminController@logout')->name('logout');
+    });
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//User
+Route::prefix('user')->name('user.')->group(function () {
+    Route::middleware(['auth', 'IsUser' , 'PreventBackHistory'])->group(function () {
+        Route::get('/dashboard', 'UserController@index')->name('dashboard');
+    });
+});
+
+//BagianDiklat
+Route::prefix('diklat')->name('diklat.')->group(function () {
+    Route::middleware(['auth', 'isDiklat', 'PreventBackHistory'])->group(function () {
+        Route::get('/dashboard', 'DiklatController@index')->name('dashboard');
+    });
+});

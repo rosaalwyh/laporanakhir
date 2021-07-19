@@ -1816,7 +1816,7 @@ td:focus, th:focus {
 /* line 1325, G:/admin_project/8 admin/management_html/scss/_reset.scss */
 .cs_modal .modal-body .social_login_btn .btn_1 {
   color: #fff;
-  background-color: #3B5998;
+  background-color: #2e8ff3;
   border: 1px solid #3B5998;
   margin-top: 0;
 }
@@ -2719,14 +2719,14 @@ p a:hover {
   align-items: center;
   border-radius: 10px;
   background: rgba(95, 99, 242, 0.06);
-  color: #884FFB;
+  color: #2e8ff3;
 }
 
 /******** base color css ********/
 /* line 2, G:/admin_project/8 admin/management_html/scss/_button.scss */
 .btn_1 {
-  background-color: #884FFB;
-  border: 1px solid #884FFB;
+  background-color: #2e8ff3;
+  border: 1px solid #2e8ff3;
   color: #fff;
   display: inline-block;
   padding: 9px 25px;
@@ -2748,7 +2748,7 @@ p a:hover {
 /* line 18, G:/admin_project/8 admin/management_html/scss/_button.scss */
 .btn_1:hover {
   color: #fff;
-  background-color: #884FFB;
+  background-color: #5676e0;
   box-shadow: 0 3px 11px rgba(136, 79, 251, 0.4);
 }
 
@@ -3715,7 +3715,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child::befor
 .header_iner .header_right .header_notification_warp li .serach_button {
   width: 32px;
   height: 32px;
-  background: #884FFB;
+  background: #567AED;
   border-radius: 50%;
   text-align: center;
   line-height: 32px;
@@ -3791,7 +3791,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child::befor
   border-radius: 50%;
   right: -12px;
   top: -12px;
-  background: #F45B0F;
+  background: #567AED;
   line-height: 22px;
 }
 
@@ -4037,7 +4037,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child::befor
   border: 0;
   width: 32px;
   height: 32px;
-  background: #F45B0F;
+  background: #567AED;
   line-height: 32px;
   border-radius: 4px;
 }
@@ -4628,7 +4628,7 @@ table.dataTable {
 
 /* line 299, G:/admin_project/8 admin/management_html/scss/_sidebar.scss */
 .sidebar #sidebar_menu > li a:hover {
-  color: #F65365 !important;
+  color: #567AED !important;
   background: #F6F7FB;
 }
 
@@ -8976,7 +8976,7 @@ canvas#highlights {
 
 /* line 153, G:/admin_project/8 admin/management_html/scss/_byer_table.scss */
 .theme_bg_1 {
-  background: #A37BFD !important;
+  background: #2e8ff3 !important;
 }
 
 /* line 156, G:/admin_project/8 admin/management_html/scss/_byer_table.scss */

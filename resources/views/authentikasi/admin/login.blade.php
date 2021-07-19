@@ -15,7 +15,7 @@
                                     <h5 class="modal-title text_white">Log in</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="{{ route('checklogin') }}">
+                                    <form method="POST" action="{{route('ceklogin')}}" autocomplete="off">
                                         @if (Session::get('success'))
                                                 <div class="alert alert-success">
                                                     {{Session::get('success')}}
@@ -29,7 +29,7 @@
                                             @endif
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Enter your username" name="username" value="{{ old('username') }}" autofocus>
+                                            <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Masukkan username" name="username" value="{{ old('username') }}" autofocus>
                                             @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" id="password" autocomplete="current-password">
+                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password" name="password" id="password" autocomplete="current-password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

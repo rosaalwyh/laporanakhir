@@ -33,7 +33,7 @@
                 </div>
             </a>
             <ul>
-              <li><a href="{{ route('admin.laporan') }}">Laporan</a></li>
+              {{-- <li><a href="{{ route('admin.laporan') }}">Laporan</a></li> --}}
               <li><a href="{{ route('blank_page') }}">Daftar Nilai</a></li>
               <li><a href="{{ route('blank_page') }}">Sertifikat</a></li>
               <li><a href="{{ route('blank_page') }}">Surat Balasan</a></li>
