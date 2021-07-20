@@ -13,7 +13,9 @@ class LoginController extends Controller
             'password' => 'required|min:5|max:30'
         ],
         [
-            'username.exists' => "Username ini tidak terdaftar!"
+            'username.required' => 'Username tidak boleh kosong',
+            'username.exists' => "Username ini tidak terdaftar!",
+            'password.required' => 'Password tidak boleh kosong'
         ]);
         $kredensil = $request->only('username', 'password');
         if(Auth::attempt($kredensil) ){

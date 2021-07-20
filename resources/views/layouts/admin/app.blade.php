@@ -47,6 +47,7 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css" id="colorSkinCSS')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 </head>
 <body class="crm_body_bg">
 
@@ -64,6 +65,7 @@
     </a>
 </div>
 <!-- footer  -->
+@stack('js')
 <script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script>
 <!-- popper js -->
 <script src="{{asset('assets/js/popper.min.js')}}"></script>

@@ -53,7 +53,7 @@
               <li><a href="{{ route('blank_page') }}">Pegawai Diklat</a></li>
               <li><a href="{{ route('blank_page') }}">Mentor</a></li>
               <li><a href="{{ route('blank_page') }}">Peserta PKL</a></li>
-              <li><a href="{{ route('blank_page') }}">Pendaftar</a></li>
+              <li><a href="{{ route('admin.pendaftar') }}">Pendaftar</a></li>
             </ul>
         </li>
         {{-- <li class="">
