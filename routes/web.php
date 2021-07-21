@@ -15,7 +15,8 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 });
 
 //User
-    Route::view('/', 'welcome')->name('home');
+    Route::view('/', 'page.user.home')->name('home');
+    Route::view('/kuota', 'page.user.kuota')->name('kuotapkl');
     Route::view('/registrasi', 'authentikasi.admin.registrasi')->name('registrasi');
     Route::post('/create', 'UserController@create')->name('regis');
     Route::view('/login', 'authentikasi.admin.login')->name('login');
@@ -28,6 +29,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', 'AdminController@index')->name('dashboard');
         Route::post('/logout', 'AdminController@logout')->name('logout');
         Route::get('/pendaftar', 'PendaftarController@index')->name('pendaftar');
+        Route::post('/tambahpendaftar', 'PendaftarController@tambahPendaftar')->name('tambahpendaftar');
+        Route::get('/peserta', 'PesertaController@index')->name('peserta');
     });
 });
 

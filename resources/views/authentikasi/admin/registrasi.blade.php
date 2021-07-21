@@ -33,7 +33,7 @@
                                         
                                         <div class="form-row">
                                             <div class="col">
-                                            <input type="text" class="form-control @error('username') is-invalid @enderror"" placeholder="Username" name="username"  value="{{ old('username') }}">
+                                            <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Username" name="username"  value="{{ old('username') }}">
                                             @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                                             @enderror
                                             </div>
                                             <div class="col">
-                                                <input type="text" class="form-control @error('email') is-invalid @enderror"" placeholder="Enter your email" name="email"  value="{{ old('email') }}">
+                                                <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Enter your email" name="email"  value="{{ old('email') }}">
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
 
                                         <div class="form-row">
                                             <div class="col">
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror"" placeholder="Password" name="password">
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
                                             @enderror
                                             </div>
                                             <div class="col">
-                                                <input type="password" class="form-control @error('cpassword') is-invalid @enderror"" placeholder="Confirm Password" name="cpassword">
+                                                <input type="password" class="form-control @error('cpassword') is-invalid @enderror" placeholder="Confirm Password" name="cpassword">
                                             @error('cpassword')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

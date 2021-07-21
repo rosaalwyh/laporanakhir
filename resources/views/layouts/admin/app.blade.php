@@ -47,7 +47,6 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css" id="colorSkinCSS')}}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 </head>
 <body class="crm_body_bg">
 
@@ -124,7 +123,7 @@
 <script src="{{asset('assets/vendors/apex_chart/apex-chart2.js')}}"></script>
 <script src="{{asset('assets/vendors/apex_chart/apex_dashboard.js')}}"></script>
 
-<!-- <script src="{{asset('assets/vendors/echart/echarts.min.js')}}"></script> -->
+<script src="{{asset('assets/vendors/echart/echarts.min.js')}}"></script>
 
 
 <script src="{{asset('assets/vendors/chart_am/core.js')}}"></script>
@@ -136,6 +135,6 @@
 <script src="{{asset('assets/js/dashboard_init.js')}}"></script>
 <script src="{{asset('assets/js/custom.js')}}"></script>
 </body>
-
+@stack('js')
 <!-- Mirrored from demo.dashboardpack.com/user-management-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jul 2021 05:04:48 GMT -->
 </html>
