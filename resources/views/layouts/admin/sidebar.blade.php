@@ -2,13 +2,13 @@
 <nav class="sidebar">
     <div class="logo d-flex justify-content-between">
         <a class="large_logo" href="{{route('admin.dashboard')}}"><img src="{{asset('assets/img/logoo.png')}}" alt=""></a>
-        <a class="small_logo" href="index-2.html"><img src="{{asset('assets/img/minilogo.png')}}" alt=""></a>
+        <a class="small_logo" href="#"><img src="{{asset('assets/img/minilogo.png')}}" alt=""></a>
         <div class="sidebar_close_icon d-lg-none">
             <i class="ti-close"></i>
         </div>
     </div>
     <ul id="sidebar_menu">
-        <li class="">
+        {{-- <li class="">
             <a class="has-arrow" href="#" aria-expanded="false">
                 <div class="nav_icon_small">
                     <img src="{{asset('assets/img/menu-icon/dashboard.svg')}}" alt="">
@@ -22,7 +22,7 @@
               <li><a href="index_3.html">Dark Sidebar</a></li>
               <li><a href="index-2.html">Light Sidebar</a></li>
             </ul>
-        </li>
+        </li> --}}
         <li class="">
             <a class="has-arrow" href="#" aria-expanded="false">
                 <div class="nav_icon_small">
@@ -33,10 +33,16 @@
                 </div>
             </a>
             <ul>
-              {{-- <li><a href="{{ route('admin.laporan') }}">Laporan</a></li> --}}
-              <li><a href="{{ route('blank_page') }}">Daftar Nilai</a></li>
+              @if (Auth::user()->role == 1 or Auth::user()->role == 3 or Auth::user()->role == 4 or Auth::user()->role == 5)
+              <li><a href="{{ route('blank_page') }}">Laporan</a></li>
+              @endif
+              @if (Auth::user()->role == 1 or Auth::user()->role == 4)
+              <li><a href="{{ route('admin.nilai') }}">Daftar Nilai</a></li>
+              @endif
+              @if (Auth::user()->role == 1 or Auth::user()->role == 3)
               <li><a href="{{ route('blank_page') }}">Sertifikat</a></li>
               <li><a href="{{ route('blank_page') }}">Surat Balasan</a></li>
+              @endif
             </ul>
         </li>
         <li class="">
@@ -49,11 +55,21 @@
             </div>
             </a>
             <ul>
-              <li><a href="{{ route('blank_page') }}">Pimpinan</a></li>
-              <li><a href="{{ route('blank_page') }}">Pegawai Diklat</a></li>
-              <li><a href="{{ route('blank_page') }}">Mentor</a></li>
+              @if (Auth::user()->role == 1 or Auth::user()->role == 5)
+              <li><a href="{{ route('admin.pimpinan') }}">Pimpinan</a></li>
+              @endif
+              @if (Auth::user()->role == 1 or Auth::user()->role == 3)
+              <li><a href="{{ route('admin.diklat') }}">Pegawai Diklat</a></li>
+              @endif
+              @if (Auth::user()->role == 1 or Auth::user()->role == 4)
+              <li><a href="{{ route('admin.mentor') }}">Mentor</a></li>
+              @endif
+              @if (Auth::user()->role == 1 or Auth::user()->role == 3 or Auth::user()->role == 4 or Auth::user()->role == 5 or Auth::user()->role == 6)
               <li><a href="{{ route('admin.peserta') }}">Peserta PKL</a></li>
+              @endif
+              @if (Auth::user()->role == 1 or Auth::user()->role == 3 or Auth::user()->role == 5 or Auth::user()->role == 7)
               <li><a href="{{ route('admin.pendaftar') }}">Pendaftar</a></li>
+              @endif
             </ul>
         </li>
         {{-- <li class="">

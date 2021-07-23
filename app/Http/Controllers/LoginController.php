@@ -24,6 +24,16 @@ class LoginController extends Controller
             }
             elseif( auth()->user()->role == 2 ){
                 return redirect()->route('user.dashboard');
+            }elseif( auth()->user()->role == 3 ){
+                return redirect()->route('diklat.dashboard');
+            }elseif( auth()->user()->role == 4 ){
+                return redirect()->route('mentor.dashboard');
+            }elseif( auth()->user()->role == 5 ){
+                return redirect()->route('pimpinan.dashboard');
+            }elseif( auth()->user()->role == 6 ){
+                return redirect()->route('peserta.dashboard');
+            }elseif( auth()->user()->role == 7 ){
+                return redirect()->route('pendaftar.dashboard');
             }
         } else {
             return redirect()->route('login')->with('fail', 'Username dan password tidak valid!');
