@@ -46,7 +46,7 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->role = 3;
+        $user->role = 2;
         $save = $user->save();
 
         if($save){
@@ -58,6 +58,42 @@ class UserController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect('login');
+        return redirect('/');
+    }
+
+    public function tambah(){
+        $user = User::all();
+        return view('page.admin.user.index', compact('user'));
+    }
+
+    public function addUser(Request $request){
+        $request->validate([
+            'username' => 'required|unique:users,username',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:5|max:30',
+            ],
+            [
+                'username.exist' => 'Username sudah terdaftar',
+                'username.required' => 'Username tidak boleh kosong',
+                'email.required' => 'Email tidak boleh kosong',
+                'email.unique' => 'Email ini sudah terdaftar',
+                'email.email' => 'Format email salah',
+                'password.required' => 'Password tidak boleh kosong',
+                'password.min' => 'Password minimal 5 karakter',
+                'password.max' => 'Password maksimal 30 karakter'
+            ]);
+        
+        $user = new User();
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->role = $request->role;
+        $user->password = Hash::make($request->password);
+        $save = $user->save();
+
+        if($save){
+            return redirect()->back()->with('success', 'Akun telah sukses terdaftar');
+        }else{
+            return redirect()->back()->with('fail', 'Akun gagal registrasi!');
+        }
     }
 }

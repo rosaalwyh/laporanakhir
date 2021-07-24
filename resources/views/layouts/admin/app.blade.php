@@ -1,6 +1,5 @@
-<html lang="zxx">
-
-
+<!DOCTYPE html>
+<html lang="en">
 <!-- Mirrored from demo.dashboardpack.com/user-management-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jul 2021 05:01:54 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
@@ -27,7 +26,7 @@
     <!-- date picker -->
      <link rel="stylesheet" href="{{ asset('assets/vendors/datepicker/date-picker.css')}}" />
 
-     <link rel="stylesheet" href="{{ asset('assets/vendors/vectormap-home/vectormap-2.0.2.css')}}" />
+     {{-- <link rel="stylesheet" href="{{ asset('assets/vendors/vectormap-home/vectormap-2.0.2.css')}}" /> --}}
      
      <!-- scrollabe  -->
      <link rel="stylesheet" href="{{ asset('assets/vendors/scroll/scrollable.css')}}" />
@@ -75,7 +74,7 @@
 <!-- waypoints js -->
 <script src="{{asset('assets/vendors/count_up/jquery.waypoints.min.js')}}"></script>
 <!-- waypoints js -->
-<script src="{{asset('assets/vendors/chartlist/Chart.min.js')}}"></script>
+{{-- <script src="{{asset('assets/vendors/chartlist/Chart.min.js')}}"></script> --}}
 <!-- counterup js -->
 <script src="{{asset('assets/vendors/count_up/jquery.counterup.min.js')}}"></script>
 
@@ -129,12 +128,11 @@
 <script src="{{asset('assets/vendors/chart_am/core.js')}}"></script>
 <script src="{{asset('assets/vendors/chart_am/charts.js')}}"></script>
 <script src="{{asset('assets/vendors/chart_am/animated.js')}}"></script>
-<script src="{{asset('assets/vendors/chart_am/kelly.js')}}"></script>
+{{-- <script src="{{asset('assets/vendors/chart_am/kelly.js')}}"></script> --}}
 <script src="{{asset('assets/vendors/chart_am/chart-custom.js')}}"></script>
 <!-- custom js -->
 <script src="{{asset('assets/js/dashboard_init.js')}}"></script>
 <script src="{{asset('assets/js/custom.js')}}"></script>
 </body>
-@stack('js')
 <!-- Mirrored from demo.dashboardpack.com/user-management-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jul 2021 05:04:48 GMT -->
-</html>
+</!DOCTYPE>

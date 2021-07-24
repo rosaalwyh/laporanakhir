@@ -1,4 +1,5 @@
-@include('layouts.users.app')
+@extends('layouts.users.app')
+@section('title', 'User | Sistem Informasi PKL')
 @section('content')
-    Hai {{Auth::user()->username}}
+
 @endsection

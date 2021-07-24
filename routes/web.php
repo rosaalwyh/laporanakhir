@@ -3,6 +3,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\MentorController;
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -26,16 +28,32 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 //Admin 1
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth','IsAdmin', 'PreventBackHistory'])->group(function () {
+        //User
+        Route::get('/user', 'UserController@tambah')->name('user');
+        Route::post('/user', 'UserController@addUser')->name('add_user');
+        // Admin
         Route::get('/dashboard', 'AdminController@index')->name('dashboard');
         Route::post('/logout', 'AdminController@logout')->name('logout');
+        //Pendaftar
         Route::get('/pendaftar', 'PendaftarController@index')->name('pendaftar');
         Route::post('/tambahpendaftar', 'PendaftarController@tambahPendaftar')->name('tambahpendaftar');
+        //Peserta
         Route::get('/peserta', 'PesertaController@index')->name('peserta');
+        //Mentor
         Route::get('/mentor', 'MentorController@index')->name('mentor');
+        Route::post('tambahmentor', 'MentorController@tambahMentor')->name('tambahmentor');
+        //Diklat
         Route::get('/diklat', 'DiklatController@index')->name('diklat');
+        Route::post('/creatediklat', 'DiklatController@tambahDiklat')->name('creatediklat');
+        Route::match(['get','post'],'/editdiklat/{id}', 'DiklatController@edit')->name('editdiklat');
+        //Pimpinan
         Route::get('/pimpinan', 'PimpinanController@index')->name('pimpinan');
+        Route::post('/tambahpimpinan', 'PimpinanController@tambahPimpinan')->name('tambahpimpinan');
+        //Nilai
         Route::get('/nilai', 'NilaiController@index')->name('nilai');
+        //Sertifikat
         Route::get('/sertifikat', 'SertifikatController@index')->name('sertifikat');
+        //Surat Balasan
         Route::get('/suratbalasan', 'SuratBalasanController@index')->name('suratbalasan');
     });
 });
@@ -44,40 +62,44 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::prefix('user')->name('user.')->group(function () {
     Route::middleware(['auth', 'IsUser' , 'PreventBackHistory'])->group(function () {
         Route::get('/dashboard', 'UserController@index')->name('dashboard');
+        Route::post('/logout', 'UserController@logout')->name('logout');
+        Route::get('/pengajuan', 'PendaftarController@pengajuan')->name('pengajuan');
+        Route::post('/tambahpendaftar', 'PendaftarController@tambahPendaftar')->name('tambahpendaftar');
     });
 });
 
 //BagianDiklat 3
 Route::prefix('diklat')->name('diklat.')->group(function () {
     Route::middleware(['auth', 'IsDiklat', 'PreventBackHistory'])->group(function () {
-        Route::get('/dashboard', 'DiklatController@index')->name('dashboard');
+        Route::get('/dashboard', 'DiklatController@getDataDiklat')->name('dashboard');
+        Route::post('creatediklat', 'DiklatController@tambahDiklat')->name('creatediklat');
     });
 });
 
 //Mentor 4
 Route::prefix('mentor')->name('mentor.')->group(function () {
     Route::middleware(['auth', 'IsMentor', 'PreventBackHistory'])->group(function () {
-        Route::get('/dashboard', 'MentorController@index')->name('dashboard');
+        Route::get('/dashboard', 'MentorController@getDataMentor')->name('dashboard');
     });
 });
 
 //Pimpinan 5
 Route::prefix('pimpinan')->name('pimpinan.')->group(function () {
     Route::middleware(['auth', 'IsPimpinan', 'PreventBackHistory'])->group(function () {
-        Route::get('/dashboard', 'PimpinanController@index')->name('dashboard');
+        Route::get('/dashboard', 'PimpinanController@getDataPimpinan')->name('dashboard');
     });
 });
 
 //Peserta 6
 Route::prefix('peserta')->name('peserta.')->group(function () {
     Route::middleware(['auth', 'IsPeserta', 'PreventBackHistory'])->group(function () {
-        Route::get('/dashboard', 'PesertaController@index')->name('dashboard');
+        Route::get('/dashboard', 'PesertaController@getDataPeserta')->name('dashboard');
     });
 });
 
 //Pendaftar 7
 Route::prefix('pendaftar')->name('pendaftar.')->group(function () {
     Route::middleware(['auth', 'IsPendaftar', 'PreventBackHistory'])->group(function () {
-        Route::get('/dashboard', 'PendaftarController@index')->name('dashboard');
+        Route::get('/dashboard', 'PendaftarController@pengajuan')->name('dashboard');
     });
 });
