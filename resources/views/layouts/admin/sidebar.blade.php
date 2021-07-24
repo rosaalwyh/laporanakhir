@@ -40,8 +40,8 @@
               <li><a href="{{ route('admin.nilai') }}">Daftar Nilai</a></li>
               @endif
               @if (Auth::user()->role == 1 or Auth::user()->role == 3)
-              <li><a href="{{ route('blank_page') }}">Sertifikat</a></li>
-              <li><a href="{{ route('blank_page') }}">Surat Balasan</a></li>
+              <li><a href="{{ route('admin.sertifikat') }}">Sertifikat</a></li>
+              <li><a href="{{ route('admin.suratbalasan') }}">Surat Balasan</a></li>
               @endif
             </ul>
         </li>

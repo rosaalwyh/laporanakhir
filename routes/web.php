@@ -35,6 +35,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/diklat', 'DiklatController@index')->name('diklat');
         Route::get('/pimpinan', 'PimpinanController@index')->name('pimpinan');
         Route::get('/nilai', 'NilaiController@index')->name('nilai');
+        Route::get('/sertifikat', 'SertifikatController@index')->name('sertifikat');
+        Route::get('/suratbalasan', 'SuratBalasanController@index')->name('suratbalasan');
     });
 });
 
