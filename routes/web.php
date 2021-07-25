@@ -57,6 +57,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/sertifikat', 'SertifikatController@index')->name('sertifikat');
         //Surat Balasan
         Route::get('/suratbalasan', 'SuratBalasanController@index')->name('suratbalasan');
+        Route::post('/tambahsuratbalasan', 'SuratBalasanController@addSurat')->name('tambahsuratbalasan');
     });
 });
 
@@ -92,7 +93,7 @@ Route::prefix('pimpinan')->name('pimpinan.')->group(function () {
     Route::middleware(['auth', 'IsPimpinan', 'PreventBackHistory'])->group(function () {
         Route::get('/dashboard', 'PimpinanController@getDataPimpinan')->name('dashboard');
         Route::get('/pendaftar/terima/{id}', 'PimpinanController@terima')->name('terima');
-        Route::get('/pendaftar/tolak/{id}', 'PimpinanController@tolak')->name('tolak');
+        Route::get('/pendaftar/tolak/{id}', 'PimpinanzController@tolak')->name('tolak');
     });
 });
 
@@ -106,6 +107,7 @@ Route::prefix('peserta')->name('peserta.')->group(function () {
 //Pendaftar 7
 Route::prefix('pendaftar')->name('pendaftar.')->group(function () {
     Route::middleware(['auth', 'IsPendaftar', 'PreventBackHistory'])->group(function () {
+        // Route::get('/pengajuan', 'PendaftarController@pengajuan')->name('dashboard');
         Route::get('/dashboard', 'PendaftarController@pengajuan')->name('dashboard');
     });
 });
