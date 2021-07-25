@@ -61,8 +61,8 @@ class DiklatController extends Controller
         }
     }
 
-    public function rekomendasi(Request $request){
-        $rekomendasi = new Pendaftar();
+    public function rekomendasi($id){
+        $rekomendasi = Pendaftar::findOrFail($id);
         $rekomendasi->status = 'terekomendasi';
         $save = $rekomendasi->save();
         if($save){

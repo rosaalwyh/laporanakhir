@@ -75,7 +75,7 @@ Route::prefix('diklat')->name('diklat.')->group(function () {
     Route::middleware(['auth', 'IsDiklat', 'PreventBackHistory'])->group(function () {
         Route::get('/dashboard', 'DiklatController@getDataDiklat')->name('dashboard');
         Route::post('creatediklat', 'DiklatController@tambahDiklat')->name('creatediklat');
-        Route::post('/pendaftar/rekomendasi', 'DiklatController@rekomendasi')->name('rekomendasi');
+        Route::get('/pendaftar/rekomendasi/{id}', 'DiklatController@rekomendasi')->name('rekomendasi');
     });
 });
 
