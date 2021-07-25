@@ -62,7 +62,7 @@ class UserController extends Controller
     }
 
     public function tambah(){
-        $user = User::all();
+        $user = User::get();
         return view('page.admin.user.index', compact('user'));
     }
 
@@ -95,5 +95,18 @@ class UserController extends Controller
         }else{
             return redirect()->back()->with('fail', 'Akun gagal registrasi!');
         }
+    }
+
+    public function show($id){
+        $user = User::find($id);
+        // dd($user);
+        return view('page.admin.user.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id){
+        $user = User::find($id);
+        $user->update($request->all());
+        // dd($request);
+        return redirect('admin/user')->with('success', 'Data user berhasil diupdate');
     }
 }

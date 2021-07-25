@@ -23,7 +23,7 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             }
             elseif( auth()->user()->role == 2 ){
-                return redirect()->route('user.dashboard');
+                return redirect()->route('home');
             }elseif( auth()->user()->role == 3 ){
                 return redirect()->route('diklat.dashboard');
             }elseif( auth()->user()->role == 4 ){

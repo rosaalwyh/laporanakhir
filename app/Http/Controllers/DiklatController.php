@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Diklat;
 use App\Models\Bagian;
+use App\Models\Pendaftar;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,6 +58,17 @@ class DiklatController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
             dd($data);
+        }
+    }
+
+    public function rekomendasi(Request $request){
+        $rekomendasi = new Pendaftar();
+        $rekomendasi->status = 'terekomendasi';
+        $save = $rekomendasi->save();
+        if($save){
+            return redirect()->back()->with('success', 'Rekomendasi sukses ditambah!');
+        }else{
+            return redirect()->back()->with('fail', 'Pegawai Diklat gagal ditambah!');
         }
     }
 }

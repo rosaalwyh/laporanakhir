@@ -46,6 +46,7 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css" id="colorSkinCSS')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body class="crm_body_bg">
 
@@ -64,7 +65,9 @@
 </div>
 <!-- footer  -->
 @stack('js')
-<script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
+{{-- <script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script> --}}
+<script src="{{asset('assets/js/script.js')}}"></script>
 <!-- popper js -->
 <script src="{{asset('assets/js/popper.min.js')}}"></script>
 <!-- bootstarp js -->

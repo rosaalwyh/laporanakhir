@@ -31,12 +31,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         //User
         Route::get('/user', 'UserController@tambah')->name('user');
         Route::post('/user', 'UserController@addUser')->name('add_user');
+        Route::get('/edit_user/{id}', 'UserController@show')->name('edit_user');
+        Route::post('/update_user/{id}', 'UserController@update')->name('userupdate');
         // Admin
         Route::get('/dashboard', 'AdminController@index')->name('dashboard');
         Route::post('/logout', 'AdminController@logout')->name('logout');
         //Pendaftar
         Route::get('/pendaftar', 'PendaftarController@index')->name('pendaftar');
-        Route::post('/tambahpendaftar', 'PendaftarController@tambahPendaftar')->name('tambahpendaftar');
+        // Route::post('/tambahpendaftar', 'PendaftarController@tambahPendaftar')->name('tambahpendaftar');
         //Peserta
         Route::get('/peserta', 'PesertaController@index')->name('peserta');
         //Mentor
@@ -61,10 +63,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 //User 2
 Route::prefix('user')->name('user.')->group(function () {
     Route::middleware(['auth', 'IsUser' , 'PreventBackHistory'])->group(function () {
-        Route::get('/dashboard', 'UserController@index')->name('dashboard');
+        // Route::get('/dashboard', 'UserController@index')->name('dashboard');
         Route::post('/logout', 'UserController@logout')->name('logout');
         Route::get('/pengajuan', 'PendaftarController@pengajuan')->name('pengajuan');
-        Route::post('/tambahpendaftar', 'PendaftarController@tambahPendaftar')->name('tambahpendaftar');
+        Route::post('/addpendaftar', 'PendaftarController@addPendaftar')->name('addpendaftar');
     });
 });
 
@@ -73,6 +75,7 @@ Route::prefix('diklat')->name('diklat.')->group(function () {
     Route::middleware(['auth', 'IsDiklat', 'PreventBackHistory'])->group(function () {
         Route::get('/dashboard', 'DiklatController@getDataDiklat')->name('dashboard');
         Route::post('creatediklat', 'DiklatController@tambahDiklat')->name('creatediklat');
+        Route::post('/pendaftar/rekomendasi', 'DiklatController@rekomendasi')->name('rekomendasi');
     });
 });
 
