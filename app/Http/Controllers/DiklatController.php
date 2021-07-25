@@ -71,4 +71,14 @@ class DiklatController extends Controller
             return redirect()->back()->with('fail', 'Pegawai Diklat gagal ditambah!');
         }
     }
+    public function penuh($id){
+        $rekomendasi = Pendaftar::findOrFail($id);
+        $rekomendasi->status = 'belum';
+        $save = $rekomendasi->save();
+        if($save){
+            return redirect()->back()->with('success', 'Rekomendasi sukses ditambah!');
+        }else{
+            return redirect()->back()->with('fail', 'Pegawai Diklat gagal ditambah!');
+        }
+    }
 }

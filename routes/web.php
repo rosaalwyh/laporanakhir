@@ -76,6 +76,7 @@ Route::prefix('diklat')->name('diklat.')->group(function () {
         Route::get('/dashboard', 'DiklatController@getDataDiklat')->name('dashboard');
         Route::post('creatediklat', 'DiklatController@tambahDiklat')->name('creatediklat');
         Route::get('/pendaftar/rekomendasi/{id}', 'DiklatController@rekomendasi')->name('rekomendasi');
+        Route::get('/pendaftar/penuh/{id}', 'DiklatController@penuh')->name('penuh');
     });
 });
 
@@ -90,6 +91,8 @@ Route::prefix('mentor')->name('mentor.')->group(function () {
 Route::prefix('pimpinan')->name('pimpinan.')->group(function () {
     Route::middleware(['auth', 'IsPimpinan', 'PreventBackHistory'])->group(function () {
         Route::get('/dashboard', 'PimpinanController@getDataPimpinan')->name('dashboard');
+        Route::get('/pendaftar/terima/{id}', 'PimpinanController@terima')->name('terima');
+        Route::get('/pendaftar/tolak/{id}', 'PimpinanController@tolak')->name('tolak');
     });
 });
 
