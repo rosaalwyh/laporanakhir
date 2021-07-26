@@ -13,7 +13,7 @@
                       </div>
                   </div>
                   <div class="white_card_body">
-                      <form action="/admin/kirim-email/" method="POST" enctype="multipart/form-data">
+                      <form action="/admin/kirim-email/{{$pendaftar->id}}" method="POST" enctype="multipart/form-data">
                           <input type="hidden" value="{{$pendaftar->id}}" name="pendaftar_id" id="pendaftar_id">
                           @csrf
                         <div class="input-group mb-3">

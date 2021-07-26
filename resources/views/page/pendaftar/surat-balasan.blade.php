@@ -39,7 +39,7 @@
                             </div>
                             <div class="QA_table mb_30">
                                 <!-- table-responsive -->
-                                <table class="table table-responsive lms_table_active3" id="tabel-sertifikat">
+                                <table class="table table-responsive lms_table_active3" id="tabel-suratbalasan">
                                     <thead>
                                         <tr>
                                           <th scope="col">Nama Lengkap</th>
@@ -78,15 +78,12 @@
         </div>
     </div>
 </div>
-
-
-@include('page.admin.suratbalasan.form')
-
 @section('js')
 <script>
     $(document).ready( function () {
-    $('#tabel-sertifikat').DataTable();
+    $('#tabel-suratbalasan').DataTable();
     } );
 </script>
 @endsection
+
 @endsection

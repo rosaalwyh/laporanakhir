@@ -74,11 +74,12 @@
                                               <th scope="col">Konfirmasi</th>
                                               @endif
                                               @if(Auth::user()->role == 1)
-                                              <th scope="col">Surat Balasan</th>
+                                              <th scope="col">Kirim Surat Balasan</th>
                                               @endif
                                               @if(Auth::user()->role == 1)
                                               <th scope="col">Action</th>
                                               @endif
+                                              {{-- <th scope="col">Surat Balasan</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>                                       
@@ -96,8 +97,9 @@
                                                 <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/pendaftar/proposal/{{$pendaftar->proposal}}"><i class="fas fa-download"></i></a></td>
                                                 <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/pendaftar/ktm/{{$pendaftar->ktm}}"><i class="fas fa-download"></i></a></td>
                                                 <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/pendaftar/surat_pengantar/{{$pendaftar->surat_pengantar}}"><i class="fas fa-download"></i></a></td>
+
                                                 @if(Auth::user()->role == 1)
-                                                <td><a class="status_btn" role="button" target="_blank" href="{{ url('/admin/formsurat/'.$pendaftar->id) }}">Surat Balasan</a></td>
+                                                <td><a class="status_btn ml-3" role="button" target="_blank" href="{{ url('/admin/formsurat/'.$pendaftar->id) }}">Send</a></td>
                                                 @endif
                                                 @if(Auth::user()->role == 1)
                                                 <td>
@@ -119,8 +121,14 @@
                                                     <a onclick="return confirm('Apakah anda yakin ingin mengubah status menjadi belum ditolak?')" href="{{url('/pimpinan/pendaftar/tolak/'.$pendaftar->id, [])}}" class="btn btn-sm btn-warning" style="border-radius:40px; font-size:10px;">Ditolak</a>
                                                 </td>
                                                 @endif
+                                                @endforeach
+                                                {{-- @foreach ($suratbalasan as $suratbalasan)
+                                                <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/suratbalasan/{{$suratbalasan->surat_balasan}}"><i class="fas fa-download"></i></a></td>
+                                                @endforeach --}}
                                             </tr>
-                                            @endforeach
+                                            {{-- <tr>
+                                                
+                                            </tr> --}}
                                         </tbody>
                                     </table>
                                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bagian;
 use Illuminate\Http\Request;
 use App\Models\Pendaftar;
+use App\Models\SuratBalasan;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,10 +30,20 @@ class PendaftarController extends Controller
         // dd($user);
         $pendaftar = Pendaftar::join('bagians', 'pendaftars.bagian_id' , '=', 'bagians.id')
                                 ->join('users', 'pendaftars.user_id', '=', 'users.id')
+                                ->join('surat_balasans', 'surat_balasans.pendaftar_id', 'pendaftars.id')
                                 ->where('pendaftars.user_id', '=', $user)
-                                ->get(['pendaftars.*', 'bagians.nama_bagian', 'users.username']);
+                                ->get(['pendaftars.*', 'bagians.nama_bagian', 'users.username', 'surat_balasans.surat_balasan']);
         // dd($pendaftar);
         return view('page.pendaftar.index', compact('pendaftar', 'bagian'));
+    }
+
+    public function surat(){
+        $user = Auth::user()->id;
+        
+        $suratbalasan = SuratBalasan::join('pendaftars', 'surat_balasans.pendaftar_id' , '=', 'pendaftars.id')
+        ->where('pendaftars.user_id', '=', $user)
+        ->get(['surat_balasans.*', 'pendaftars.nama_lengkap']);
+        return view('page.pendaftar.surat-balasan', compact('suratbalasan','user'));
     }
 
     // public function tambahPendaftar(Request $request)

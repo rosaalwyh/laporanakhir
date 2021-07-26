@@ -20,7 +20,7 @@
                                 @endforeach
                             </select>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" aria-describedby="basic-addon2" name="no_surat_balasan" placeholder="Masukkan Surat Balasan">
+                                <input type="text" class="form-control" aria-describedby="basic-addon2" name="no_surat_balasan" placeholder="Nomor Surat Balasan">
                             </div>
                             <div class="input-group mb-3">
                                 <input type="file" class="form-control" aria-describedby="basic-addon2" name="surat_balasan" required accept=".pdf">
@@ -38,7 +38,7 @@
     </div>
 </div>
 
-{{-- FORM UBAH PENDAFTAR --}}
+{{-- FORM UBAH PENDAFTAR
 <div class="modal fade" id="form_ubah_surat_balasan" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -71,4 +71,4 @@
         </div>
       </div>
     </div>
-</div>
+</div> --}}

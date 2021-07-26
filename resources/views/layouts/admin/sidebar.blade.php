@@ -29,6 +29,9 @@
               <li><a href="{{ route('admin.sertifikat') }}">Sertifikat</a></li>
               <li><a href="{{ route('admin.suratbalasan') }}">Surat Balasan</a></li>
               @endif
+              @if(Auth::user()->role == 7)
+              <li><a href="{{ route('pendaftar.suratbalasan') }}">Surat Balasan</a></li>
+              @endif
             </ul>
         </li>
         <li class="">

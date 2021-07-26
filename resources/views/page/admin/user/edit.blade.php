@@ -34,7 +34,7 @@
                     <option value="7" @if($user->role == 7) selected @endif>Pendaftar</option>
                 </select>
                 <div class="footer center" style="margin: auto;">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <a href="{{route('admin.user')}}" class="btn btn-secondary" data-dismiss="modal">Batal</a>
                     <button type="submit" class="btn btn-primary">Ubah</button>
                 </div>
             </form>

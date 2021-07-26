@@ -7,6 +7,7 @@ use App\Models\SuratBalasan;
 use App\Models\Pendaftar;
 use App\Mail\SuratBalasanMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class SuratBalasanController extends Controller
 {
@@ -21,8 +22,10 @@ class SuratBalasanController extends Controller
         // dd($request);
         // $name = $request->file('surat_balasan')->getClientOriginalName();
         // $path = $request->file('surat_balasan')->store('public/suratbalasan');
+        $destination_path = 'public/suratbalasan/';
         $surat_balasan = $request->file('surat_balasan');
         $surat_balasan_name = $surat_balasan->getClientOriginalName();
+        $path = $request->file('surat_balasan')->storeAs($destination_path, $surat_balasan_name);
         $surat = new SuratBalasan();
         $surat->pendaftar_id = $request->pendaftar_id;
         $surat->no_surat_balasan = $request->no_surat_balasan;
@@ -40,21 +43,21 @@ class SuratBalasanController extends Controller
         return view('page.admin.suratbalasan.form-email-surat', compact('pendaftar'));
     }
 
-    public function sendSuratBalasan(Request $request){
-        // $pendaftar = Pendaftar::join('users', 'pendaftars.user_id', '=', 'users.id')
-        //                         ->get('pendaftars.*', 'users.email');  
-        //                         dd($pendaftar);
+    public function sendSuratBalasan(Request $request, $id){
+        // $email = Pendaftar::join('users', 'pendaftars.user_id', '=', 'users.id')
+        //                     ->get('pendaftars.*', 'users.email');
+        $email = Pendaftar::join('users', 'pendaftars.user_id' , '=', 'users.id')
+        ->select('users.email')
+        ->where('pendaftars.id', '=', $id)
+        ->get();
+        // dd($email);
         $details = [
         'title' => 'E-mail Surat Balasan Pengajuan Praktik Kerja Lapangan',
         'body' => 'Hi',
         'no_surat_balasan' => $request->no_surat_balasan,
         'surat_balasan' => $request->file('surat_balasan')
         ];
-        $send = Mail::to('alawiyahrosa@gmail.com')->send(new \App\Mail\SuratBalasanMail($details));
-        
-        if($send){
-             return redirect('admin/pendaftar')->with('success', "Email berhasil dikirim");
-        }
-        return redirect('admin/pendaftar')->with('fail', "Email gagal dikirim");
+        Mail::to($email)->send(new \App\Mail\SuratBalasanMail($details));
+        return redirect('admin/pendaftar')->with('success', "Email berhasil dikirim");
     }
 }

@@ -59,7 +59,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/suratbalasan', 'SuratBalasanController@index')->name('suratbalasan');
         Route::post('/tambahsuratbalasan', 'SuratBalasanController@addSurat')->name('tambahsuratbalasan');
         Route::get('/formsurat/{id}', 'SuratBalasanController@formEmailSurat')->name('formsurat');
-        Route::post('/kirim-email','SuratBalasanController@sendSuratBalasan')->name('sendSuratBalasan');
+        Route::post('/kirim-email/{id}','SuratBalasanController@sendSuratBalasan')->name('sendSuratBalasan');
     });
 });
 
@@ -111,5 +111,6 @@ Route::prefix('pendaftar')->name('pendaftar.')->group(function () {
     Route::middleware(['auth', 'IsPendaftar', 'PreventBackHistory'])->group(function () {
         // Route::get('/pengajuan', 'PendaftarController@pengajuan')->name('dashboard');
         Route::get('/dashboard', 'PendaftarController@pengajuan')->name('dashboard');
+        Route::get('/suratbalasan', 'PendaftarController@surat')->name('suratbalasan');
     });
 });
