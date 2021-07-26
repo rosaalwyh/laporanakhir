@@ -12,7 +12,7 @@
                 @if(!Auth::user())
                 <li class="menu-has-children"><a href="{{route('login')}}" style="text-decoration: none">Pengajuan</a></li>
                 @else 
-                <li class="menu-has-children"><a href="{{route('user.pengajuan')}}" style="text-decoration: none">Pengajuan</a></li>
+                <li class="menu-has-children"><a href="{{route('user.formpengajuan')}}" style="text-decoration: none">Pengajuan</a></li>
                 @endif
                 @if(!Auth::user())
                 <li class="menu-has-children"><a href="{{route('login')}}" style="text-decoration: none">Login</a></li>

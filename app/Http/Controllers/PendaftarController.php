@@ -30,9 +30,8 @@ class PendaftarController extends Controller
         // dd($user);
         $pendaftar = Pendaftar::join('bagians', 'pendaftars.bagian_id' , '=', 'bagians.id')
                                 ->join('users', 'pendaftars.user_id', '=', 'users.id')
-                                ->join('surat_balasans', 'surat_balasans.pendaftar_id', 'pendaftars.id')
                                 ->where('pendaftars.user_id', '=', $user)
-                                ->get(['pendaftars.*', 'bagians.nama_bagian', 'users.username', 'surat_balasans.surat_balasan']);
+                                ->get(['pendaftars.*', 'bagians.nama_bagian', 'users.username']);
         // dd($pendaftar);
         return view('page.pendaftar.index', compact('pendaftar', 'bagian'));
     }
@@ -89,7 +88,10 @@ class PendaftarController extends Controller
     //         return redirect()->back()->with('fail', 'Akun gagal registrasi!');
     //     }
     // }
-    
+    public function formPengajuan(){
+        $bagian = Bagian::all();
+        return view('page.user.pengajuan', compact('bagian'));
+    }
     public function addPendaftar(Request $request)
     {
         if($request->hasFile('proposal')){
@@ -128,7 +130,7 @@ class PendaftarController extends Controller
         $save = $pendaftar->save();
 
         if($save){
-            return redirect()->back()->with('success', 'Akun telah sukses terdaftar, silahkan tunggu verifikasi akun sekitar satu jam');
+            return redirect()->back()->with('success', 'Akun telah sukses terdaftar, silahkan tunggu verifikasi akun sekitar satu jam, lalu login dengan akun yg sudah anda buat');
         }else{
             return redirect()->back()->with('fail', 'Akun gagal registrasi!');
         }

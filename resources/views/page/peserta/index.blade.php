@@ -42,10 +42,13 @@
                                         <tr>
                                           <th scope="col">Nama Lengkap</th>
                                           <th scope="col">NIM</th>
+                                          <th scope="col">Bagian Dituju</th>
+                                          <th scope="col">Mentor</th>
+                                          <th scope="col">Tanggal Mulai</th>
+                                          <th scope="col">Tanggal Selesai</th>
                                           <th scope="col">Tanggal Lahir</th>
                                           <th scope="col">Jenis Kelamin</th>
                                           <th scope="col">Asal Kampus</th>
-                                          <th scope="col">Bagian Dituju</th>
                                           <th scope="col">Jurusan</th>
                                           <th scope="col">Proposal</th>
                                           <th scope="col">KTM</th>
@@ -69,14 +72,17 @@
                                         <tr>
                                             <th scope="row"><a href="#" class="question_content"></a>{{$peserta->nama_lengkap}}</th>
                                             <td>{{$peserta->nim}}</td>
+                                            <td>{{$peserta->nama_bagian}}</td>
+                                            <td>{{$peserta->mentor}}</td>
+                                            <td>{{$peserta->tanggal_mulai}}</td>
+                                            <td>{{$peserta->tanggal_selesai}}</td>
                                             <td>{{$peserta->tanggal_lahir}}</td>
                                             <td>{{$peserta->jenis_kelamin}}</td>
                                             <td>{{$peserta->asal_kampus}}</td>
-                                            <td>{{$peserta->bagian_id}}</td>
                                             <td>{{$peserta->jurusan}}</td>
-                                            <td>{{$peserta->proposal}}</td>
-                                            <td>{{$peserta->ktm}}</td>
-                                            <td>{{$peserta->surat_pengantar}}</td>
+                                            <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/pendaftar/proposal/{{$peserta->proposal}}"><i class="fas fa-download"></i></a></td>
+                                                <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/pendaftar/ktm/{{$peserta->ktm}}"><i class="fas fa-download"></i></a></td>
+                                                <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/pendaftar/surat_pengantar/{{$peserta->surat_pengantar}}"><i class="fas fa-download"></i></a></td>
                                             <td>{{$peserta->tanggal_mulai}}</td>
                                             <td>{{$peserta->tanggal_selesai}}</td>
                                             @if(Auth::user()->role == 1)

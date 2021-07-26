@@ -7,6 +7,8 @@ use App\Models\Peserta;
 use App\Models\Mentor;
 use App\Models\User;
 use App\Models\Bagian;
+use App\Models\Nilai;
+use App\Models\NilaiSeminar;
 use App\Models\Pendaftar;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,12 +30,15 @@ class PesertaController extends Controller
 
     public function getDataPeserta()
     {
+        $mentor = Mentor::all();
+        $bagian = Bagian::all();
         $user = Auth::user()->id;
         $peserta = Peserta::join('users', 'pesertas.user_id' , '=', 'users.id')
         ->join('pendaftars', 'pesertas.pendaftar_id', '=', 'pendaftars.id' )
         ->join('bagians', 'pendaftars.bagian_id', '=', 'bagians.id')
+        ->join('mentors', 'pesertas.mentor_id', '=', 'mentors.id')
         ->where('pesertas.user_id', '=', $user)
-        ->get(['pesertas.*','pendaftars.*']);
+        ->get(['pesertas.id as peserta_id', 'tanggal_mulai', 'tanggal_selesai','pendaftars.*', 'bagians.nama_bagian', 'mentors.nama_lengkap as mentor']);
 
         // return response()->json($pendaftar);
         // dd($peserta);
@@ -57,4 +62,24 @@ class PesertaController extends Controller
             return redirect()->back()->with('fail', 'Peserta gagal ditambah!');
         }
     }
+    public function surat(){
+        return view('page.pendaftar.surat-balasan');
+    }
+
+    public function getNilai(){
+        $user = Auth::user()->id;
+        $nilai = Nilai::join('pesertas', 'nilais.peserta_id' , '=', 'pesertas.id')
+        ->join('pendaftars', 'pesertas.pendaftar_id', '=', 'pendaftars.id')
+        ->join('bagians', 'pendaftars.bagian_id', '=', 'bagians.id')
+        ->join('nilai_seminars', 'nilai_seminars.peserta_id', '=', 'pesertas.id')
+        ->where('pesertas.user_id', '=', $user)
+        ->get(['nilais.*', 'pesertas.pendaftar_id', 'pendaftars.nama_lengkap', 'bagians.nama_bagian', 'nilai_seminars.*']);
+        return view('page.peserta.nilai.index', compact('nilai'));
+    }
+
+    public function getSertifikat(){
+        return view('page.peserta.sertifikat.index');
+    }
+    
 }
+

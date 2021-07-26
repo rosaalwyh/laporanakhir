@@ -24,6 +24,7 @@
               @endif
               @if (Auth::user()->role == 1 or Auth::user()->role == 4)
               <li><a href="{{ route('admin.nilai') }}">Daftar Nilai</a></li>
+              <li><a href="{{ route('admin.nilai-seminar') }}">Daftar Nilai Seminar</a></li>
               @endif
               @if (Auth::user()->role == 1 or Auth::user()->role == 3)
               <li><a href="{{ route('admin.sertifikat') }}">Sertifikat</a></li>
@@ -31,6 +32,11 @@
               @endif
               @if(Auth::user()->role == 7)
               <li><a href="{{ route('pendaftar.suratbalasan') }}">Surat Balasan</a></li>
+              @endif
+              @if(Auth::user()->role == 6)
+              <li><a href="{{ route('peserta.suratbalasan') }}">Surat Balasan</a></li>
+              <li><a href="{{ route('peserta.nilaiseminar') }}">Nilai Seminar</a></li>
+              <li><a href="{{ route('peserta.sertifikat') }}">Sertifikat</a></li>
               @endif
             </ul>
         </li>

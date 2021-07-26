@@ -54,6 +54,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/tambahpimpinan', 'PimpinanController@tambahPimpinan')->name('tambahpimpinan');
         //Nilai
         Route::get('/nilai', 'NilaiController@index')->name('nilai');
+        Route::get('/nilai-seminar', 'NilaiController@nilaiSeminar')->name('nilai-seminar');
+        Route::post('tambahnilaiseminar', 'NilaiController@tambahNilaiSeminar')->name('tambahnilaiseminar');
+        Route::post('tambahnilai', 'NilaiController@tambahNilai')->name('tambahnilai');
         Route::get('/formnilai/{id}', 'NilaiController@formEmailNilai')->name('formsurat');
         Route::post('/kirim-nilai/{id}','NilaiController@sendNilai')->name('sendNilai');
         //Sertifikat
@@ -74,6 +77,7 @@ Route::prefix('user')->name('user.')->group(function () {
         // Route::get('/dashboard', 'UserController@index')->name('dashboard');
         Route::post('/logout', 'UserController@logout')->name('logout');
         Route::get('/pengajuan', 'PendaftarController@pengajuan')->name('pengajuan');
+        Route::get('/formpengajuan', 'PendaftarController@formPengajuan')->name('formpengajuan');
         Route::post('/addpendaftar', 'PendaftarController@addPendaftar')->name('addpendaftar');
     });
 });
@@ -108,6 +112,9 @@ Route::prefix('pimpinan')->name('pimpinan.')->group(function () {
 Route::prefix('peserta')->name('peserta.')->group(function () {
     Route::middleware(['auth', 'IsPeserta', 'PreventBackHistory'])->group(function () {
         Route::get('/dashboard', 'PesertaController@getDataPeserta')->name('dashboard');
+        Route::get('/suratbalasan', 'PendaftarController@surat')->name('suratbalasan');
+        Route::get('/nilaiseminar', 'PesertaController@getNilai')->name('nilaiseminar');
+        Route::get('/sertifikat', 'PesertaController@getSeminar')->name('sertifikat');
     });
 });
 
