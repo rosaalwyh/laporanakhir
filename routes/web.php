@@ -58,6 +58,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         //Surat Balasan
         Route::get('/suratbalasan', 'SuratBalasanController@index')->name('suratbalasan');
         Route::post('/tambahsuratbalasan', 'SuratBalasanController@addSurat')->name('tambahsuratbalasan');
+        Route::get('/formsurat/{id}', 'SuratBalasanController@formEmailSurat')->name('formsurat');
+        Route::post('/kirim-email','SuratBalasanController@sendSuratBalasan')->name('sendSuratBalasan');
     });
 });
 

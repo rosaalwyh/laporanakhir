@@ -17,16 +17,6 @@
                         <div class="QA_section">
                             <div class="white_box_tittle list_header">
                                 <div class="box_right d-flex lms_block">
-                                    {{-- <div class="serach_field_2"> --}}
-                                        {{-- <div class="search_inner">
-                                            <form Active="#">
-                                                <div class="search_field">
-                                                    <input type="text" placeholder="Search content here...">
-                                                </div>
-                                                <button type="submit"> <i class="ti-search"></i> </button>
-                                            </form>
-                                        </div> --}}
-                                    {{-- </div> --}}
                                     @if(Auth::user()->role == 1 OR Auth::user()->role == 3)
                                     <div class="add_button ml-10">
                                         <a href="#" data-toggle="modal" data-target="#form_tambah_surat_balasan" class="btn_1">Tambah Surat Balasan</a>
@@ -34,7 +24,19 @@
                                     @endif
                                 </div>
                             </div>
-    
+                            <div class="result">
+                                @if (Session::get('success'))
+                                    <div class="alert alert-success">
+                                        {{Session::get('success')}}
+                                    </div>
+                                @endif
+        
+                                @if (Session::get('fail'))
+                                <div class="alert alert-danger">
+                                    {{Session::get('fail')}}
+                                </div>
+                                @endif
+                            </div>
                             <div class="QA_table mb_30">
                                 <!-- table-responsive -->
                                 <table class="table table-responsive lms_table_active3" id="tabel-sertifikat">

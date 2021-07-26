@@ -36,6 +36,19 @@
                                         @endif --}}
                                     </div>
                                 </div>
+                                <div class="result">
+                                    @if (Session::get('success'))
+                                        <div class="alert alert-success">
+                                            {{Session::get('success')}}
+                                        </div>
+                                    @endif
+            
+                                    @if (Session::get('fail'))
+                                    <div class="alert alert-danger">
+                                        {{Session::get('fail')}}
+                                    </div>
+                                    @endif
+                                </div>
         
                                 <div class="QA_table mb_30">
                                     <!-- table-responsive -->
@@ -84,7 +97,7 @@
                                                 <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/pendaftar/ktm/{{$pendaftar->ktm}}"><i class="fas fa-download"></i></a></td>
                                                 <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/pendaftar/surat_pengantar/{{$pendaftar->surat_pengantar}}"><i class="fas fa-download"></i></a></td>
                                                 @if(Auth::user()->role == 1)
-                                                <td><a class="status_btn" role="button" target="_blank" href="#">Surat Balasan</a></td>
+                                                <td><a class="status_btn" role="button" target="_blank" href="{{ url('/admin/formsurat/'.$pendaftar->id) }}">Surat Balasan</a></td>
                                                 @endif
                                                 @if(Auth::user()->role == 1)
                                                 <td>
