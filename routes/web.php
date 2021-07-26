@@ -61,6 +61,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/kirim-nilai/{id}','NilaiController@sendNilai')->name('sendNilai');
         //Sertifikat
         Route::get('/sertifikat', 'SertifikatController@index')->name('sertifikat');
+        Route::post('/tambahsertifikat', 'SertifikatController@tambahSertifikat')->name('tambahsertifikat');
         Route::get('/formsertifikat/{id}', 'SertifikatController@formEmailSertifikat')->name('formsertifikat');
         Route::post('/kirim-sertifikat/{id}','SertifikatController@sendSertifikat')->name('sendSertifikat');
         //Surat Balasan
@@ -114,7 +115,7 @@ Route::prefix('peserta')->name('peserta.')->group(function () {
         Route::get('/dashboard', 'PesertaController@getDataPeserta')->name('dashboard');
         Route::get('/suratbalasan', 'PendaftarController@surat')->name('suratbalasan');
         Route::get('/nilaiseminar', 'PesertaController@getNilai')->name('nilaiseminar');
-        Route::get('/sertifikat', 'PesertaController@getSeminar')->name('sertifikat');
+        Route::get('/sertifikat', 'PesertaController@getSertifikat')->name('sertifikat');
     });
 });
 

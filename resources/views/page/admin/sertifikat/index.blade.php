@@ -34,7 +34,19 @@
                                     @endif
                                 </div>
                             </div>
-    
+                            <div class="result">
+                                @if (Session::get('success'))
+                                    <div class="alert alert-success">
+                                        {{Session::get('success')}}
+                                    </div>
+                                @endif
+        
+                                @if (Session::get('fail'))
+                                <div class="alert alert-danger">
+                                    {{Session::get('fail')}}
+                                </div>
+                                @endif
+                            </div>
                             <div class="QA_table mb_30">
                                 <!-- table-responsive -->
                                 <table class="table table-responsive lms_table_active3" id="tabel-sertifikat">
@@ -51,7 +63,7 @@
                                         @foreach ($sertifikat as $sertifikat)
                                         <tr>
                                             <th scope="row"><a href="#" class="question_content"></a>{{$sertifikat->nama_lengkap}}</th>
-                                            <td>{{$sertifikat->sertifikat}}</td>
+                                            <td><a class="btn btn-primary" role="button" target="_blank" href="/storage/sertifikat/{{$sertifikat->sertifikat}}"><i class="fas fa-download"></i></a></td>
                                             {{-- <td><a href="#" class="status_btn">Rekomendasi</a></td> --}}
                                             @if(Auth::user()->role == 1 OR Auth::user()->role == 3)
                                             <td>

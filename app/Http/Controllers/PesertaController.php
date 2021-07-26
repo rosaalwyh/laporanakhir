@@ -10,6 +10,7 @@ use App\Models\Bagian;
 use App\Models\Nilai;
 use App\Models\NilaiSeminar;
 use App\Models\Pendaftar;
+use App\Models\Sertifikat;
 use Illuminate\Support\Facades\Auth;
 
 class PesertaController extends Controller
@@ -78,7 +79,12 @@ class PesertaController extends Controller
     }
 
     public function getSertifikat(){
-        return view('page.peserta.sertifikat.index');
+        $user = Auth::user()->id;
+        $sertifikat = Sertifikat::join('pesertas', 'sertifikats.peserta_id' , '=', 'pesertas.id')
+        ->join('pendaftars', 'pesertas.pendaftar_id', '=', 'pendaftars.id')
+        ->where('pesertas.user_id', '=', $user)
+        ->get(['sertifikats.*', 'pesertas.pendaftar_id', 'pendaftars.nama_lengkap']);
+        return view('page.peserta.sertifikat.index', compact('sertifikat'));
     }
     
 }
