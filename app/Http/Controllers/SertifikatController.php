@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sertifikat;
+use App\Models\Peserta;
+use App\Models\Pendaftar;
+use App\Mail\SertifikatMail;
+use Illuminate\Support\Facades\Mail;
 
 class SertifikatController extends Controller
 {
@@ -30,5 +34,29 @@ class SertifikatController extends Controller
         }else{
             return redirect()->back()->with('fail', 'Surat Balasan gagal ditambah!');
         }
+    }
+
+    public function formEmailSertifikat($id){
+        $peserta = Peserta::findOrFail($id);
+        return view('page.admin.sertifikat.form-email-surat', compact('peserta'));;
+    }
+
+    public function sendSertifikat(Request $request, $id){
+        // $email = Pendaftar::join('users', 'pendaftars.user_id', '=', 'users.id')
+        //                     ->get('pendaftars.*', 'users.email');
+        $email = Peserta::join('pendaftars', 'pesertas.pendaftar_id', '=', 'pendaftars.id')
+        ->join('users', 'pendaftars.user_id', '=', 'users.id')
+        ->select('users.email')
+        ->where('pesertas.id', '=', $id)
+        ->get();
+        // dd($email);
+        $details = [
+        'title' => 'E-mail Surat Balasan Pengajuan Praktik Kerja Lapangan',
+        'body' => 'Hi',
+        'no_sertifikat' => $request->no_sertifikat,
+        'sertifikat' => $request->file('sertifikat')
+        ];
+        Mail::to($email)->send(new SertifikatMail($details));
+        return redirect('admin/peserta')->with('success', "Email berhasil dikirim");
     }
 }

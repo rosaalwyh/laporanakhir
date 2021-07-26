@@ -41,6 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Route::post('/tambahpendaftar', 'PendaftarController@tambahPendaftar')->name('tambahpendaftar');
         //Peserta
         Route::get('/peserta', 'PesertaController@index')->name('peserta');
+        Route::post('/tambahpeserta', 'PesertaController@tambahPeserta')->name('tambahpeserta');
         //Mentor
         Route::get('/mentor', 'MentorController@index')->name('mentor');
         Route::post('tambahmentor', 'MentorController@tambahMentor')->name('tambahmentor');
@@ -53,8 +54,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/tambahpimpinan', 'PimpinanController@tambahPimpinan')->name('tambahpimpinan');
         //Nilai
         Route::get('/nilai', 'NilaiController@index')->name('nilai');
+        Route::get('/formnilai/{id}', 'NilaiController@formEmailNilai')->name('formsurat');
+        Route::post('/kirim-nilai/{id}','NilaiController@sendNilai')->name('sendNilai');
         //Sertifikat
         Route::get('/sertifikat', 'SertifikatController@index')->name('sertifikat');
+        Route::get('/formsertifikat/{id}', 'SertifikatController@formEmailSertifikat')->name('formsertifikat');
+        Route::post('/kirim-sertifikat/{id}','SertifikatController@sendSertifikat')->name('sendSertifikat');
         //Surat Balasan
         Route::get('/suratbalasan', 'SuratBalasanController@index')->name('suratbalasan');
         Route::post('/tambahsuratbalasan', 'SuratBalasanController@addSurat')->name('tambahsuratbalasan');
