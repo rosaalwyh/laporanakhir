@@ -62,7 +62,11 @@
                                             <td>
                                                 <div class="action_btns d-flex">
                                                     <a href="#" class="action_btn mr_10" data-toggle="modal" data-target="#form_ubah_surat_balasan"> <i class="far fa-edit"></i> </a>
-                                                    <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                                    <form action="{{url('admin/suratbalasanhapus/'. $suratbalasan->id)}}" method="POST"  onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button class="action_btn"> <i class="fas fa-trash"></i> </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                             @endif

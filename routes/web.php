@@ -33,6 +33,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/user', 'UserController@addUser')->name('add_user');
         Route::get('/edit_user/{id}', 'UserController@show')->name('edit_user');
         Route::post('/update_user/{id}', 'UserController@update')->name('userupdate');
+        Route::delete('hapususer/{id}', 'UserController@delete')->name('user.delete');
         // Admin
         Route::get('/dashboard', 'AdminController@index')->name('dashboard');
         Route::post('/logout', 'AdminController@logout')->name('logout');
@@ -69,6 +70,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/tambahsuratbalasan', 'SuratBalasanController@addSurat')->name('tambahsuratbalasan');
         Route::get('/formsurat/{id}', 'SuratBalasanController@formEmailSurat')->name('formsurat');
         Route::post('/kirim-email/{id}','SuratBalasanController@sendSuratBalasan')->name('sendSuratBalasan');
+        Route::delete('suratbalasanhapus/{id}', 'SuratBalasanController@delete')->name('suratbalasan.delete');
     });
 });
 

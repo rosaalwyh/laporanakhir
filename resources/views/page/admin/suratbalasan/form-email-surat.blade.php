@@ -17,7 +17,7 @@
                           <input type="hidden" value="{{$pendaftar->id}}" name="pendaftar_id" id="pendaftar_id">
                           @csrf
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" aria-describedby="basic-addon2" name="no_surat_balasan" placeholder="Masukkan Surat Balasan">
+                            <input type="text" class="form-control" aria-describedby="basic-addon2" name="no_surat_balasan" placeholder="Masukkan No Surat Balasan">
                         </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">

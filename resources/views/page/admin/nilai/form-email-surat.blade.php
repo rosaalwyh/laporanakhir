@@ -14,7 +14,7 @@
                   </div>
                   <div class="white_card_body">
                       <form action="/admin/kirim-nilai/{{$peserta->id}}" method="POST" enctype="multipart/form-data">
-                          <input type="hiddzen" value="{{$peserta->id}}" name="peserta_id" id="peserta_id">
+                          <input type="hidden" value="{{$peserta->id}}" name="peserta_id" id="peserta_id">
                           @csrf
                         <div class="input-group mb-3">
                             <div class="custom-file">

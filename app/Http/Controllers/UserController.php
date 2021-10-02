@@ -109,4 +109,10 @@ class UserController extends Controller
         // dd($request);
         return redirect('admin/user')->with('success', 'Data user berhasil diupdate');
     }
+
+    public function delete($id){
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
 }

@@ -60,4 +60,10 @@ class SuratBalasanController extends Controller
         Mail::to($email)->send(new \App\Mail\SuratBalasanMail($details));
         return redirect('admin/pendaftar')->with('success', "Email berhasil dikirim");
     }
+
+    public function delete($id){
+        $suratbalasan = SuratBalasan::find($id);
+        $suratbalasan->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
 }
