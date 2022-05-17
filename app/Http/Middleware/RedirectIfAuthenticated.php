@@ -38,7 +38,8 @@ class RedirectIfAuthenticated
                 return redirect()->route('pimpinan.dashboard');
             }elseif( Auth::guard($guard)->check() && Auth::user()->role == 6){
                 return redirect()->route('peserta.dashboard');
-            }
+            }elseif( Auth::guard($guard)->check() && Auth::user()->role == 7){
+                return redirect()->route('pendaftar.dashboard');
         }
 
         return $next($request);

@@ -1,3 +1,0 @@
-<html>
-    Hai
-</html>

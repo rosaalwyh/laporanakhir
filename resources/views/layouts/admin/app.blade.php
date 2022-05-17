@@ -1,6 +1,5 @@
-<html lang="zxx">
-
-
+<!DOCTYPE html>
+<html lang="en">
 <!-- Mirrored from demo.dashboardpack.com/user-management-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jul 2021 05:01:54 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
@@ -27,7 +26,7 @@
     <!-- date picker -->
      <link rel="stylesheet" href="{{ asset('assets/vendors/datepicker/date-picker.css')}}" />
 
-     <link rel="stylesheet" href="{{ asset('assets/vendors/vectormap-home/vectormap-2.0.2.css')}}" />
+     {{-- <link rel="stylesheet" href="{{ asset('assets/vendors/vectormap-home/vectormap-2.0.2.css')}}" /> --}}
      
      <!-- scrollabe  -->
      <link rel="stylesheet" href="{{ asset('assets/vendors/scroll/scrollable.css')}}" />
@@ -47,6 +46,7 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css" id="colorSkinCSS')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body class="crm_body_bg">
 
@@ -64,7 +64,10 @@
     </a>
 </div>
 <!-- footer  -->
-<script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script>
+@stack('js')
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
+{{-- <script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script> --}}
+<script src="{{asset('assets/js/script.js')}}"></script>
 <!-- popper js -->
 <script src="{{asset('assets/js/popper.min.js')}}"></script>
 <!-- bootstarp js -->
@@ -74,7 +77,7 @@
 <!-- waypoints js -->
 <script src="{{asset('assets/vendors/count_up/jquery.waypoints.min.js')}}"></script>
 <!-- waypoints js -->
-<script src="{{asset('assets/vendors/chartlist/Chart.min.js')}}"></script>
+{{-- <script src="{{asset('assets/vendors/chartlist/Chart.min.js')}}"></script> --}}
 <!-- counterup js -->
 <script src="{{asset('assets/vendors/count_up/jquery.counterup.min.js')}}"></script>
 
@@ -122,18 +125,17 @@
 <script src="{{asset('assets/vendors/apex_chart/apex-chart2.js')}}"></script>
 <script src="{{asset('assets/vendors/apex_chart/apex_dashboard.js')}}"></script>
 
-<!-- <script src="{{asset('assets/vendors/echart/echarts.min.js')}}"></script> -->
+<script src="{{asset('assets/vendors/echart/echarts.min.js')}}"></script>
 
 
 <script src="{{asset('assets/vendors/chart_am/core.js')}}"></script>
 <script src="{{asset('assets/vendors/chart_am/charts.js')}}"></script>
 <script src="{{asset('assets/vendors/chart_am/animated.js')}}"></script>
-<script src="{{asset('assets/vendors/chart_am/kelly.js')}}"></script>
+{{-- <script src="{{asset('assets/vendors/chart_am/kelly.js')}}"></script> --}}
 <script src="{{asset('assets/vendors/chart_am/chart-custom.js')}}"></script>
 <!-- custom js -->
 <script src="{{asset('assets/js/dashboard_init.js')}}"></script>
 <script src="{{asset('assets/js/custom.js')}}"></script>
 </body>
-
 <!-- Mirrored from demo.dashboardpack.com/user-management-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jul 2021 05:04:48 GMT -->
-</html>
+</!DOCTYPE>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 @section('content')
 <div class="erroe_page_wrapper">
     <div class="errow_wrap">

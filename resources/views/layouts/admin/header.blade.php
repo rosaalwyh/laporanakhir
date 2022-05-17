@@ -102,7 +102,7 @@
                         <!--/ Menu_NOtification_Wrap  -->
                         </li>
                         <li>
-                            <a class="CHATBOX_open" href="#"> <img src="{{asset('assets/img/icon/msg.svg')}}" alt=""> <span>2</span>  </a>
+                            {{-- <a class="CHATBOX_open" href="#"> <img src="{{asset('assets/img/icon/msg.svg')}}" alt=""> <span>2</span>  </a> --}}
                         </li>
                     </div>
                     <div class="profile_info">

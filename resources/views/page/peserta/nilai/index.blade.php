@@ -1,0 +1,137 @@
+@extends('layouts.admin.app')
+@section('content')
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Data Nilai</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="white_card_body">
+                        <div class="QA_section">
+                            <div class="white_box_tittle list_header">
+                                <div class="box_right d-flex lms_block">
+                                    @if(Auth::user()->role == 1)
+                                    <div class="add_button ml-10">
+                                        <a href="#" data-toggle="modal" data-target="#form_tambah_nilai" class="btn_1">Tambah Nilai</a>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="QA_table mb_30">
+                                <!-- table-responsive -->
+                                <table class="table table-responsive lms_table_active3" id="tabel-nilai">
+                                    <thead>
+                                        <tr>
+                                          <th scope="col">Nama Lengkap</th>
+                                          <th scope="col">Bagian Diklat</th>
+                                          <th scope="col">Partisipasi</th>
+                                          <th scope="col">Capaian</th>
+                                          <th scope="col">Etika</th>
+                                          <th scope="col">Askep</th>
+                                          <th scope="col">Praktik</th>
+                                          @if(Auth::user()->role == 1 OR Auth::user()->role == 4)
+                                          <th scope="col">Action</th>
+                                          @endif
+                                        </tr>
+                                    </thead>
+                                    <tbody>                                       
+                                        @foreach ($nilai as $nilai)
+                                        <tr>
+                                            <th scope="row"><a href="#" class="question_content">{{$nilai->nama_lengkap}}</a></th>
+                                            <td>{{$nilai->nama_bagian}}</td>
+                                            <td>{{$nilai->partisipasi}}</td>
+                                            <td>{{$nilai->capaian}}</td>
+                                            <td>{{$nilai->etika}}</td>
+                                            <td>{{$nilai->askep}}</td>
+                                            <td>{{$nilai->praktik}}</td>
+                                            {{-- <td><a href="#" class="status_btn">Rekomendasi</a></td> --}}
+                                            @if(Auth::user()->role == 1 OR Auth::user()->role == 4)
+                                            <td>
+                                                <div class="action_btns d-flex">
+                                                    <a href="#" class="action_btn mr_10" data-toggle="modal" data-target="#form_ubah_nilai"> <i class="far fa-edit"></i> </a>
+                                                    <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                                </div>
+                                            </td>
+                                            @endif
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="white_card_header">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Data Nilai Seminar</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="white_box_tittle list_header">
+                                <div class="box_right d-flex lms_block">
+                                    @if(Auth::user()->role == 1)
+                                    <div class="add_button ml-10">
+                                        <a href="#" data-toggle="modal" data-target="#form_tambah_nilai_seminar" class="btn_1">Tambah Nilai Seminar</a>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="QA_table mb_30">
+                                <!-- table-responsive -->
+                                <table class="table table-responsive lms_table_active3" id="tabel-nilai">
+                                    <thead>
+                                        <tr>
+                                          <th scope="col">Nama Lengkap</th>
+                                          <th scope="col">Pre-test</th>
+                                          <th scope="col">Post-test</th>
+                                          <th scope="col">Total</th>
+                                          @if(Auth::user()->role == 1 OR Auth::user()->role == 4)
+                                          <th scope="col">Action</th>
+                                          @endif
+                                        </tr>
+                                    </thead>
+                                    <tbody>                            
+                                        <tr>
+                                            <td>{{$nilai->nama_lengkap}}</td>
+                                            <td>{{$nilai->pre_test}}</td>
+                                            <td>{{$nilai->post_test}}</td>
+                                            <td>{{$nilai->total_nilai}}</td>
+                                            {{-- <td><a href="#" class="status_btn">Rekomendasi</a></td> --}}
+                                            @if(Auth::user()->role == 1 OR Auth::user()->role == 4)
+                                            <td>
+                                                <div class="action_btns d-flex">
+                                                    <a href="#" class="action_btn mr_10" data-toggle="modal" data-target="#form_ubah_nilai_seminar"> <i class="far fa-edit"></i> </a>
+                                                    <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                                </div>
+                                            </td>
+                                            @endif
+                                            @endforeach
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section('js')
+<script>
+    $(document).ready( function () {
+    $('#tabel-nilai').DataTable();
+    } );
+    $(document).ready( function () {
+    $('#tabel-nilai-seminar').DataTable();
+    } );
+</script>
+@endsection   
+@endsection

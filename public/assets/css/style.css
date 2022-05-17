@@ -1292,10 +1292,15 @@ table.dataTable tbody th, table.dataTable tbody td {
   margin-left: 10px;
 }
 
+.mb_10 {
+  margin-bottom: 10px !important;
+}
+
 /* line 922, G:/admin_project/8 admin/management_html/scss/_reset.scss */
 .mb_30 {
   margin-bottom: 30px !important;
 }
+
 
 @media (max-width: 575.98px) {
   /* line 925, G:/admin_project/8 admin/management_html/scss/_reset.scss */
@@ -5653,7 +5658,7 @@ body::-webkit-scrollbar {
 
 /* line 53, G:/admin_project/8 admin/management_html/scss/_dashboard_part.scss */
 .white_card .white_card_body {
-  padding: 5px 30px 25px 30px;
+  padding: 5px 10px 0px 10px;
 }
 
 /* line 57, G:/admin_project/8 admin/management_html/scss/_dashboard_part.scss */

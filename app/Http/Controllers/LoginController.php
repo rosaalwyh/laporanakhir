@@ -13,7 +13,9 @@ class LoginController extends Controller
             'password' => 'required|min:5|max:30'
         ],
         [
-            'username.exists' => "Username ini tidak terdaftar!"
+            'username.required' => 'Username tidak boleh kosong',
+            'username.exists' => "Username ini tidak terdaftar!",
+            'password.required' => 'Password tidak boleh kosong'
         ]);
         $kredensil = $request->only('username', 'password');
         if(Auth::attempt($kredensil) ){
@@ -21,7 +23,17 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             }
             elseif( auth()->user()->role == 2 ){
-                return redirect()->route('user.dashboard');
+                return redirect()->route('home');
+            }elseif( auth()->user()->role == 3 ){
+                return redirect()->route('diklat.dashboard');
+            }elseif( auth()->user()->role == 4 ){
+                return redirect()->route('mentor.dashboard');
+            }elseif( auth()->user()->role == 5 ){
+                return redirect()->route('pimpinan.dashboard');
+            }elseif( auth()->user()->role == 6 ){
+                return redirect()->route('peserta.dashboard');
+            }elseif( auth()->user()->role == 7 ){
+                return redirect()->route('pendaftar.dashboard');
             }
         } else {
             return redirect()->route('login')->with('fail', 'Username dan password tidak valid!');
